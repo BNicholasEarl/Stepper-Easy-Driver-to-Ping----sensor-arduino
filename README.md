@@ -1,4 +1,4 @@
-Stepper-Easy-Driver-to-Ping----sensor-arduino
+Stepper-Easy-Driver-to-Ping)))-sensor-arduino
 =============================================
 
-Trying to make a stepper rotate acordint to a distance reading
+Trying to make a stepper mottor rotate acording to a distance reading.

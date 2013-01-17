@@ -1,0 +1,79 @@
+const int pingPin = 7;
+int steps;
+void setup() {
+
+  pinMode(8, OUTPUT);     
+
+  pinMode(9, OUTPUT);
+
+  digitalWrite(8, LOW);
+
+  digitalWrite(9, LOW);
+}
+
+void loop()
+{ int steps;
+  getThereForward();
+  steps = getThereForward();
+  getThereBackward();
+  steps = getThereBackward();
+  dontGoNoWhere();
+}
+  
+
+long ping()
+{
+  long x, duration;
+  pinMode(pingPin, OUTPUT);
+  digitalWrite(pingPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(pingPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(pingPin, LOW);
+
+  pinMode(pingPin, INPUT);
+  duration = pulseIn(pingPin, HIGH);
+
+  x = duration / 29;
+  
+   
+  return(x);
+}
+
+long getThereForward()
+{ int cm = ping();
+  while (steps < cm * 20){
+  digitalWrite(8, LOW);
+  digitalWrite(9, HIGH);
+  delayMicroseconds(100);          
+  digitalWrite(9, LOW); 
+  delayMicroseconds(100);
+   steps = steps + 1;}
+   
+   return steps;
+ 
+
+}
+
+long getThereBackward()
+{ int cm = ping();
+  while (steps > cm * 20) {
+  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  delayMicroseconds(100);          
+  digitalWrite(9, LOW); 
+  delayMicroseconds(100);
+   steps = steps - 1;}
+   
+   return steps;
+
+}
+
+long dontGoNoWhere()
+{  digitalWrite(9, LOW); 
+  delayMicroseconds(100);
+ 
+}
+
+
+
